@@ -1,14 +1,41 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Análise de Prospecção - Nutricionistas</title>
-    <script type="module" crossorigin src="/assets/index-B5myY5Wi.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-GhuA3Dgk.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CRM • Prospectos</title>
+
+  <!-- Favicon (se existir na raiz) -->
+  <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+
+  <!-- CSS na RAIZ (nome exato) -->
+  <link rel="stylesheet" href="./index-GhuA3Dgk.css" />
+
+  <!-- Opcional: ajuda com caminhos relativos no GitHub Pages -->
+  <base href="./">
+</head>
+<body>
+  <!-- Contêiner que o bundle costuma usar -->
+  <div id="root"></div>
+
+  <!-- Logs de diagnóstico (aparecem no console se algo falhar) -->
+  <script>
+    window.addEventListener('error', e => console.error('[error]', e.message, e));
+    window.addEventListener('unhandledrejection', e => console.error('[unhandledrejection]', e.reason));
+  </script>
+
+  <!-- Carrega o bundle ESM após o DOM (evita React #299) -->
+  <script type="module">
+    // garante o container vazio antes do React montar
+    let el = document.getElementById('root');
+    if (!el) { el = document.createElement('div'); el.id = 'root'; document.body.appendChild(el); }
+    el.innerHTML = '';
+
+    // importa o bundle da RAIZ
+    import('./index-B5myY5Wi.js')
+      .then(() => console.log('[ok] JS importado'))
+      .catch(err => console.error('[erro] ao importar JS', err));
+  </script>
+</body>
 </html>
+
